@@ -1,0 +1,58 @@
+body {
+  background-color: #191B1C;
+  font-family: 'Roboto Condensed';
+}
+
+kbd {
+  display: block;
+  font-size: 40px;
+  color: #FFF;
+  font-family: 'Roboto Condensed';
+}
+
+.key {
+  border: 3px solid #212225;
+  padding-top: 15px;
+  text-align: center;
+  margin: 10px;
+  width: 100px;
+  height: 80px;
+  background-color:rgba(0,0,0,0.5);
+  float: left;
+  transition: all 0.07s; // Changes the speed of the transition
+}
+
+.sound {
+  color: #6A1B9A;
+  text-transform: uppercase;
+}
+
+.playing {
+  transform: scale(1.2); // Changes the size of the square on key press
+  border-color: #6A1B9A;
+}
+
+#center {
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  height: 50%;
+  width: 60%;
+  margin: -15% 0 0 -25%;
+}
+
+#message {
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  position: absolute;
+  top: 35%;
+  left: 45%;
+  height: 50%;
+  width: 60%;
+  margin: -15% 0 0 -25%;
+  color: #FFF;
+}

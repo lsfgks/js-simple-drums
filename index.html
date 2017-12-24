@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS Simple Drums</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  </head>
+  <body>
+    <div id="message">
+      Simply press the keys below to play.
+    </div>
+
+    <div id="center">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hithat</span>
+    </div>
+
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">ride</span>
+    </div>
+
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">snare</span>
+    </div>
+
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">tom</span>
+    </div>
+
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom 2</span>
+    </div>
+
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">crash</span>
+    </div>
+  </div>
+  </div>
+</div>
+
+    <!-- Audio files -->
+    <audio data-key="65" src="sounds/clap.mp3"></audio> <!-- Clap -->
+    <audio data-key="83" src="sounds/hihat.mp3"></audio> <!-- Hihat -->
+    <audio data-key="68" src="sounds/kick.mp3"></audio> <!-- Kick -->
+    <audio data-key="70" src="sounds/openhat.wav"></audio> <!-- Openhat -->
+    <audio data-key="71" src="sounds/ride.wav"></audio> <!-- Ride -->
+    <audio data-key="72" src="sounds/snare.mp3"></audio> <!-- Snare -->
+    <audio data-key="74" src="sounds/tom1.wav"></audio> <!-- Tom -->
+    <audio data-key="75" src="sounds/tom2.wav"></audio> <!-- Tom2 -->
+    <audio data-key="76" src="sounds/crash.mp3"></audio> <!-- Crash -->
+    <!-- To change the keys you need to change de data-key attribute. To find out a data-key simply log e.keyCode on the console or go to http://keycode.info/ -->
+
+
+    <script type="text/javascript">
+      window.addEventListener('keydown', function (e) {
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // Selects the audio tags
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // Selects the divs with the "key" class
+
+        if(!audio) return; // If no audio is assigned to a key, the function won't run
+
+        audio.currentTime = 0; // Sets audio time to zero so it can be played over and over again
+
+        audio.play(); // Plays the audio
+
+        key.classList.add('playing'); // Add the "playing" class to the key divs, starting the CSS transition
+      });
+
+
+      //remove transition
+      window.addEventListener('keyup', function (e) {
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+          if(key && key.classList.contains('playing')) {
+            key.classList.remove('playing');
+          }
+      });
+    </script>
+  </body>
+</html>
